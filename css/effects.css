@@ -1,0 +1,52 @@
+/* ───────── Fundo espacial ───────── */
+.space {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 50% 0%, var(--space-2) 0%, var(--space-1) 35%, var(--space-0) 75%),
+    var(--space-0);
+}
+.space__nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  mix-blend-mode: screen;
+  translate: var(--nx, 0px) var(--ny, 0px);
+  transition: translate 1.2s var(--ease);
+}
+.space__nebula--a { width: 55vmax; height: 40vmax; left: -15vmax; top: -10vmax; background: radial-gradient(closest-side, rgba(29, 63, 184, 0.55), transparent); animation: drift-a 30s ease-in-out infinite alternate; }
+.space__nebula--b { width: 45vmax; height: 35vmax; right: -12vmax; top: 30vh; background: radial-gradient(closest-side, rgba(74, 46, 168, 0.4), transparent); animation: drift-b 36s ease-in-out infinite alternate; }
+.space__nebula--c { width: 50vmax; height: 30vmax; left: 15vw; bottom: -12vmax; background: radial-gradient(closest-side, rgba(15, 111, 143, 0.35), transparent); animation: drift-c 42s ease-in-out infinite alternate; }
+
+.stars { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+
+/* ───────── Revelação no scroll ───────── */
+html.reveal-ready [data-reveal] {
+  opacity: 0;
+  translate: 0 32px;
+  filter: blur(8px);
+  transition: opacity 1s var(--ease), translate 1s var(--ease), filter 1s var(--ease);
+  transition-delay: calc(var(--d, 0) * 1ms);
+}
+html.reveal-ready [data-reveal].is-in { opacity: 1; translate: 0 0; filter: none; }
+
+/* ───────── Keyframes ───────── */
+@keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(75, 227, 165, 0.6); } 80%, 100% { box-shadow: 0 0 0 9px rgba(75, 227, 165, 0); } }
+@keyframes spin { to { rotate: 360deg; } }
+@keyframes wheel { 0% { translate: 0 0; opacity: 1; } 70% { translate: 0 10px; opacity: 0; } 100% { opacity: 0; } }
+@keyframes drift-a { to { transform: translate(12vw, 8vh) scale(1.15); } }
+@keyframes drift-b { to { transform: translate(-10vw, 14vh) scale(0.9); } }
+@keyframes drift-c { to { transform: translate(-8vw, -10vh) scale(1.2); } }
+
+/* Entrada do nome (fora do sistema de revelação para manter o brilho). */
+@keyframes name-in {
+  from { opacity: 0; translate: 0 40px; filter: blur(14px) drop-shadow(0 10px 50px rgba(122, 167, 255, 0)); letter-spacing: -0.02em; }
+  to { opacity: 1; translate: 0 0; filter: blur(0) drop-shadow(0 10px 50px rgba(122, 167, 255, 0.28)); }
+}
+
+/* O filtro da stack precisa vencer o estado revelado. */
+html.reveal-ready .grid .tech[data-reveal] { transition: opacity 0.6s var(--ease), translate 1s var(--ease), filter 0.6s var(--ease), scale 0.6s var(--ease), border-color 0.4s, box-shadow 0.4s var(--ease); }
+html.reveal-ready .grid .tech.is-dim, .grid .tech.is-dim { opacity: 0.2; scale: 0.95; filter: grayscale(1); }

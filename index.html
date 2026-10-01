@@ -1,0 +1,116 @@
+<title>Kauê Andrade</title>
+<meta name="description" content="Portfólio de Kauê Andrade: infraestrutura, redes, dados e entrega de software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Manrope:wght@400;500;600&family=Michroma&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/effects.css">
+
+<!-- Fundo espacial -->
+<div class="space" aria-hidden="true">
+  <div class="space__nebula space__nebula--a"></div>
+  <div class="space__nebula space__nebula--b"></div>
+  <div class="space__nebula space__nebula--c"></div>
+</div>
+<canvas class="stars" id="stars" aria-hidden="true"></canvas>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div></div>
+
+<main>
+
+  <!-- Abertura -->
+  <section class="hero" id="inicio">
+    <div class="hero__planet" aria-hidden="true"></div>
+
+    <div class="hero__inner" id="hero-inner">
+      <p class="status" data-reveal>
+        <span class="status__dot"></span>
+        <span>Disponível para oportunidades</span>
+      </p>
+
+      <h1 class="hero__name" id="hero-name">Kauê Andrade</h1>
+      <p class="hero__subtitle" data-reveal style="--d:120">Portfólio</p>
+
+      <p class="hero__lead" data-reveal style="--d:220">DevOps, redes e infraestrutura.<br>Trabalhando na Comtele e cursando Análise e Desenvolvimento de Sistemas.</p>
+
+      <div class="hero__cta" data-reveal style="--d:420">
+        <a class="btn btn--solid" href="#experiencia" data-magnetic data-cursor="ver">Ver experiência</a>
+        <a class="btn btn--ghost" href="#contato" data-magnetic data-cursor="ver">Contato</a>
+      </div>
+    </div>
+
+    <a class="hero__cue" href="#experiencia" aria-label="Ir para Experiência">
+      <span class="hero__mouse"><span></span></span>
+    </a>
+  </section>
+
+  <!-- Experiência -->
+  <section class="section" id="experiencia">
+    <div class="container">
+      <header class="section__head">
+        <h2 class="section__title" data-reveal>Experiência</h2>
+        <p class="section__lead" data-reveal style="--d:80">Onde trabalho e onde estudo.</p>
+      </header>
+      <div class="xp" id="xp"></div>
+    </div>
+  </section>
+
+  <!-- Tecnologias -->
+  <section class="section" id="stack">
+    <div class="container">
+      <header class="section__head section__head--row">
+        <div>
+          <h2 class="section__title" data-reveal>Tecnologias</h2>
+          <p class="section__lead" data-reveal style="--d:80">Ferramentas do trabalho e dos estudos.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Filtrar por categoria" id="tabs" data-reveal>
+          <span class="tabs__glider" aria-hidden="true"></span>
+        </div>
+      </header>
+      <ul class="grid" id="stack-grid"></ul>
+    </div>
+  </section>
+
+  <!-- Perfil do LinkedIn -->
+  <section class="section section--tight" id="perfil">
+    <div class="container">
+      <a class="profile" id="profile-card" target="_blank" rel="noopener" data-reveal data-tilt data-tilt-max="3" data-cursor="abrir" aria-label="Abrir perfil no LinkedIn">
+        <span class="profile__banner"><img src="assets/linkedin-banner.png" alt="" width="675" height="248" loading="lazy"></span>
+        <span class="profile__body">
+          <span class="profile__photo"><img src="assets/linkedin-photo.png" alt="Foto de Kauê Andrade" width="178" height="178" loading="lazy"></span>
+          <span class="profile__info">
+            <span class="profile__name">Kauê Andrade</span>
+            <span class="profile__role">Analista DevOps</span>
+            <span class="profile__place">Araraquara, São Paulo, Brasil</span>
+          </span>
+          <span class="profile__orgs">
+            <span class="profile__org"><span class="profile__logo profile__logo--comtele"><img src="assets/comtele.png" alt="" width="32" height="32"></span>Comtele</span>
+            <span class="profile__org"><span class="profile__logo"><img src="assets/unip.png" alt="" width="32" height="32"></span>Universidade Paulista</span>
+          </span>
+          <span class="profile__cta">Ver perfil no LinkedIn <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="contato">
+  <div class="container footer__inner">
+    <div>
+      <p class="footer__title">Contato</p>
+      <p class="footer__text">Aberto a oportunidades em infraestrutura, DevOps e desenvolvimento.</p>
+      <p class="footer__mail" id="footer-mail"></p>
+    </div>
+    <div class="footer__links" id="footer-links"></div>
+  </div>
+  <div class="container footer__base">
+    <span>© <span id="year"></span> Kauê Andrade</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="js/main.js"></script>
