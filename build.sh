@@ -8,7 +8,7 @@
 #                   variável de ambiente SITE_URL com o seu domínio.
 set -euo pipefail
 
-SITE_URL="${SITE_URL:-https://kaueandrade.dev}"
+SITE_URL="${SITE_URL:-https://kaue.work}"
 SITE_URL="${SITE_URL%/}"
 TITLE="Kauê Andrade | Analista DevOps"
 DESC="DevOps, redes e infraestrutura. Trabalhando na Comtele e cursando Análise e Desenvolvimento de Sistemas."
