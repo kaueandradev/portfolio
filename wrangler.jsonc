@@ -1,0 +1,9 @@
+// Configuração do Cloudflare Workers: publica a pasta dist/ (gerada pelo build.sh)
+// como site estático. O "name" precisa ser igual ao nome do projeto na Cloudflare.
+{
+  "name": "kaue-work",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
