@@ -189,3 +189,55 @@ html.has-cursor .cursor { display: block; }
   pointer-events: none;
 }
 .toast.is-visible { transform: translate(-50%, 0); opacity: 1; }
+
+/* ───────── Bolinha que acompanha o cursor ───────── */
+.buddy {
+  position: fixed;
+  right: calc(env(safe-area-inset-right, 0px) + 24px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+  z-index: 45;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  border-radius: 50%;
+  animation: buddy-in 0.9s var(--spring) 1.2s both;
+}
+.buddy__body {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #eef2ff 55%, #cdd8f5 100%);
+  box-shadow:
+    0 10px 24px -8px rgba(0, 0, 0, 0.6),
+    0 0 30px -6px rgba(122, 167, 255, 0.55),
+    inset 0 -4px 8px rgba(91, 92, 240, 0.12);
+  transition: scale 0.3s var(--spring);
+}
+.buddy:hover .buddy__body { scale: 1.08; }
+.buddy__eyes {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  display: flex;
+  gap: 10px;
+  margin: -7px 0 0 -10px;
+}
+.buddy__eyes span {
+  width: 5px;
+  height: 13px;
+  border-radius: 4px;
+  background: #0b1030;
+  transform-origin: 50% 60%;
+  transition: scale 0.08s ease-in;
+}
+.buddy.is-blinking .buddy__eyes span { scale: 1 0.12; }
+.buddy.is-hopping .buddy__body { animation: buddy-hop 0.6s var(--spring); }
+
+@keyframes buddy-in { from { opacity: 0; scale: 0.3; translate: 0 30px; } to { opacity: 1; scale: 1; translate: 0 0; } }
+@keyframes buddy-hop { 0% { translate: 0 0; } 35% { translate: 0 -18px; scale: 0.92 1.08; } 70% { translate: 0 0; scale: 1.08 0.92; } 100% { scale: 1; } }
+
+@media (max-width: 600px) {
+  .buddy { width: 44px; height: 44px; right: 16px; bottom: 16px; }
+  .buddy__eyes { gap: 8px; margin: -6px 0 0 -8px; }
+  .buddy__eyes span { width: 4px; height: 11px; }
+}

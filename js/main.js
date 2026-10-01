@@ -4,6 +4,7 @@ import { initCursor } from "./modules/cursor.js";
 import { initSpace } from "./modules/space.js";
 import { initTilt, initMagnetic, initReveal } from "./modules/interactions.js";
 import { initHeroMotion } from "./modules/motion.js";
+import { initBuddy } from "./modules/buddy.js";
 import { toast } from "./modules/toast.js";
 
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -16,6 +17,7 @@ initMagnetic();
 initReveal({ reduced });
 initTabs();
 initHeroMotion({ reduced });
+initBuddy({ reduced });
 
 // Copiar e-mail (só existe se profile.email estiver preenchido).
 document.getElementById("copy-email")?.addEventListener("click", async (e) => {

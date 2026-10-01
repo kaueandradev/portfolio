@@ -7,7 +7,7 @@ export const profile = {
   github: "https://github.com/kaueandradev",
   linkedin: "https://www.linkedin.com/in/kaue-andradev/",
   // E-mail exibido no rodapé com botão de copiar (vazio esconde).
-  email: "kauex3956@gmail.com",
+  email: "contato@kaue.work",
 };
 
 export const experience = [

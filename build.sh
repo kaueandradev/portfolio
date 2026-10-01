@@ -47,13 +47,17 @@ EOF
   printf '\n</html>\n'
 } > dist/index.html
 
-# Cabeçalhos de segurança e cache servidos pelo Cloudflare Pages.
+# Cabeçalhos de segurança e cache servidos pela Cloudflare.
+# CSP: só carrega scripts do próprio site e fontes do Google; bloqueia iframes e plugins.
 cat > dist/_headers <<'EOF'
 /*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
 
 /assets/*
   Cache-Control: public, max-age=604800
