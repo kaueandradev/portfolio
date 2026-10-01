@@ -48,6 +48,7 @@ EOF
 } > dist/index.html
 
 # Cabeçalhos de segurança e cache servidos pela Cloudflare.
+# CSS e JS sempre conferem com o servidor (via ETag), então atualizações aparecem na hora.
 # CSP: só carrega scripts do próprio site e fontes do Google; bloqueia iframes e plugins.
 cat > dist/_headers <<'EOF'
 /*
@@ -60,13 +61,13 @@ cat > dist/_headers <<'EOF'
   Cross-Origin-Opener-Policy: same-origin
 
 /assets/*
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=86400
 
 /css/*
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=0, must-revalidate
 
 /js/*
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=0, must-revalidate
 EOF
 
 echo "dist/ gerado para ${SITE_URL}"
